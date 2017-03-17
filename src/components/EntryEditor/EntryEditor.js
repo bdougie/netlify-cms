@@ -28,10 +28,9 @@ class EntryEditor extends Component {
   };
   handleOpenClosePreview = () => {
     if (this.state.previewOpen) {
-      this.setState({previewOpen: false})
-    }
-    else {
-      this.setState({previewOpen: true})
+      this.setState({ previewOpen: false });
+    } else {
+      this.setState({ previewOpen: true });
     }
   };
 
@@ -56,7 +55,7 @@ class EntryEditor extends Component {
           <div className={styles.container}>
             <ScrollSyncPane>
               <div className={controlClassName}>
-                  <Button onClick={this.handleOpenClosePreview.bind(this)}> OPEN </Button>
+                <Button onClick={this.handleOpenClosePreview.bind(this)}> OPEN </Button>
                 <ControlPane
                   collection={collection}
                   entry={entry}
@@ -84,7 +83,7 @@ class EntryEditor extends Component {
 
       </div>
     );
-  }
+  };
   render() {
     const {
         collection,

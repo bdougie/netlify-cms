@@ -53,6 +53,7 @@ class EntryEditor extends Component {
           <div className={styles.container}>
             <ScrollSyncPane>
               <div className={controlClassName}>
+
                 <Button style={{ 'margin-left': '80vw' }} onClick={this.handleTogglePreview}>
                   OPEN PREVIEW
                 </Button>
@@ -69,6 +70,7 @@ class EntryEditor extends Component {
                   onRemoveAsset={onRemoveAsset}
                   ref={c => this.controlPaneRef = c} // eslint-disable-line
                 />
+                
               </div>
             </ScrollSyncPane>
           </div>

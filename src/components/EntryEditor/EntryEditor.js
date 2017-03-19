@@ -131,7 +131,7 @@ class EntryEditor extends Component {
                     onRemoveAsset={onRemoveAsset}
                     ref={c => this.controlPaneRef = c} // eslint-disable-line
                   />
-                  
+
                 </div>
               </ScrollSyncPane>
               <div className={previewClassName}>

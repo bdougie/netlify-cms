@@ -11,13 +11,10 @@ import styles from './EntryEditor.css';
 const PREVIEW_STATE = 'cms.preview-state';
 
 class EntryEditor extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showEventBlocker: false,
-      previewOpen: (localStorage.getItem(PREVIEW_STATE) !== null ? localStorage.getItem(PREVIEW_STATE) : true),
-    };
-  }
+  state = {
+    showEventBlocker: false,
+    previewOpen: localStorage.getItem(PREVIEW_STATE) === "open",
+  };
 
   handleSplitPaneDragStart = () => {
     this.setState({ showEventBlocker: true });
@@ -34,7 +31,11 @@ class EntryEditor extends Component {
 
   handleTogglePreview = () => {
     const { previewOpen } = this.state;
-    this.setState({ previewOpen: !previewOpen }, localStorage.setItem(PREVIEW_STATE, !previewOpen));
+    const newPreviewState = !previewOpen ? "open" : "closed";
+    this.setState(
+      { previewOpen: !previewOpen },
+      localStorage.setItem(PREVIEW_STATE, newPreviewState)
+    );
   };
 
   render() {
@@ -52,12 +53,14 @@ class EntryEditor extends Component {
         onCancelEdit,
     } = this.props;
 
+    const { previewOpen } = this.state;
+
     const controlClassName = `${ styles.controlPane } ${ this.state.showEventBlocker && styles.blocker }`;
     const previewClassName = `${ styles.previewPane } ${ this.state.showEventBlocker && styles.blocker }`;
 
     const editor = (
       <div className={controlClassName}>
-        <Button style={{ 'margin-left': '35vw' }} onClick={this.handleTogglePreview}> TOGGLE PREVIEW </Button>
+        <Button onClick={this.handleTogglePreview}> TOGGLE PREVIEW </Button>
         <ControlPane
           collection={collection}
           entry={entry}
@@ -100,7 +103,7 @@ class EntryEditor extends Component {
     );
     return (
       <div className={styles.root}>
-        {this.state.previewOpen ? editorWithPreivew : editor}
+        {previewOpen === true ? editorWithPreivew : editor}
         <div className={styles.footer}>
           <Toolbar
             isPersisting={entry.get('isPersisting')}

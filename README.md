@@ -13,7 +13,7 @@ It presents a clean UI for editing content stored in a Git repository.
 
 You setup a YAML config to describe the content model of your site, and typically
 tweak the main layout of the CMS a bit to fit your own site.
-
+sdafsd
 When a user navigates to `/admin` they'll be prompted to login, and once authenticated
 they'll be able to create new content or edit existing content.
 
